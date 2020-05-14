@@ -1,0 +1,119 @@
+#
+set term post eps enhanced solid color "Times-Roman" 20
+
+set output "Fig4_Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00-5.e-2.jloop0.imag.eps"
+
+set size 1.1,1.0
+set multiplot layout 1,2
+
+
+ell = 1000
+
+# nth    = 12
+# jloop  = 4
+
+# thtout = 0  # theta=pi/2
+# set title "MHD magnetosphere ({/Symbol b}' = -0.05; {/Symbol q} = {/Symbol p}/2)"
+
+# thtout = 8    # theta=5pi/6
+# set title "MHD magnetosphere ({/Symbol b}' = -0.05; {/Symbol q} = 5{/Symbol p}/6)"
+# set title "MHD magnetosphere ({/Symbol b}' = -0.05; {/Symbol q} =-tan^{-1}({/Symbol m}_p/{/Symbol m}_H))"
+
+# set title "(-{/Symbol b}' = 0.0; E_0 = 1.e-3)"
+
+# m = thtout*10
+m = 0
+
+
+set size 1.0,1.0
+
+set origin -0.15,0.0
+
+set colorbox horizontal user origin 0.20,0.20 size 0.3,0.03
+set cbrange[0:*]
+set cbtics 0.05
+
+#set xlabel "k_{x} / 2{/Symbol p}" offset 0,-2.5
+#set ylabel "k_{y} / 2{/Symbol p}" rotate parallel
+#set xlabel "k_{x} / 2{/Symbol p}" offset 0,-1.0
+set ylabel "k_{y} / 2{/Symbol p}" rotate parallel offset -1.5,0
+set xlabel "k_{x} / 2{/Symbol p}" offset 0,-1.0
+#set ylabel "k_{y} / 2{/Symbol p}" rotate parallel offset 0,0
+#set xlabel "k_{x} / 2{/Symbol p}" offset 0,0
+
+unset ztics
+
+unset key
+
+#set output "Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00.jloop0.real.eps"
+#set xrange[-15:15]
+#set yrange[-15:15]
+#
+#set cbrange [0:*]
+#set view 360,360
+#set view equal xy
+#
+#
+#splot "Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00.thtscan_m00.dat" \
+#       using ($3/(2*pi))*cos($4):($3/(2*pi))*sin($4):($5*ell/pi) w pm3d
+#
+
+# set output "Fig4a_Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00.jloop0.imag.eps"
+set xrange[-15:15]
+set yrange[-15:15]
+
+set cbrange [0:*]
+set view 360,360
+set view equal xy
+
+#set y2label "k_{y} / 2{/Symbol p}" rotate parallel offset 0,0
+#set y2tics
+#show y2label
+#show y2tics
+
+set label 1 "(a)" at -23,20 font "Times-Roman,30"
+show label
+
+splot "Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00.thtscan_m00.dat" \
+       using ($3/(2*pi))*cos($4):($3/(2*pi))*sin($4):($6*ell/pi) w pm3d
+
+
+
+set origin 0.35,0.0
+
+set size 1.0,1.0
+
+set colorbox horizontal user origin 0.7,0.2 size 0.3,0.03
+set cbrange[0:*]
+set cbtics 0.2
+
+#set ylabel "k_{y} / 2{/Symbol p}" rotate parallel offset 0,0
+#set xlabel "k_{x} / 2{/Symbol p}" offset 0,0
+
+unset ztics
+
+unset key
+set xrange[-15:15]
+set yrange[-15:15]
+set view 360,360
+set view equal xy
+
+set label 1 "(b)" at -23,20 font "Times-Roman,30"
+show label
+
+# set ytics left
+
+splot "Mag-MHDp_dipole.param9.va-sqrtB.beta5.e-2.thtscan_m00.dat1" \
+       using ($3/(2*pi))*cos($4):($3/(2*pi))*sin($4):($6*ell/pi) w pm3d, \
+      "Mag-MHDp_dipole.param9.va-sqrtB.beta5.e-2.thtscan_m00.dat2" \
+       using ($3/(2*pi))*cos($4):($3/(2*pi))*sin($4):($6*ell/pi) w pm3d, \
+      "Mag-MHDp_dipole.param9.va-sqrtB.beta5.e-2.thtscan_m00.dat3" \
+       using ($3/(2*pi))*cos($4):($3/(2*pi))*sin($4):($6*ell/pi) w pm3d, \
+      "Mag-MHDp_dipole.param9.va-sqrtB.beta5.e-2.thtscan_m00.dat4" \
+       using ($3/(2*pi))*cos($4):($3/(2*pi))*sin($4):($6*ell/pi) w pm3d, \
+      "Mag-MHDp_dipole.param9.va-sqrtB.beta5.e-2.thtscan_m00.dat5" \
+       using ($3/(2*pi))*cos($4):($3/(2*pi))*sin($4):($6*ell/pi) w pm3d, \
+      "Mag-MHDp_dipole.param9.va-sqrtB.beta5.e-2.thtscan_m00.dat6" \
+       using ($3/(2*pi))*cos($4):($3/(2*pi))*sin($4):($6*ell/pi) w pm3d
+
+unset multiplot
