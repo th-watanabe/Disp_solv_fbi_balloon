@@ -1,0 +1,76 @@
+#
+set term post eps enhanced solid color "Times-Roman" 20
+
+set output "Fig1_Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00.thtscan.tht_5pi6.eps"
+
+set size 1.4,0.8
+set multiplot layout 1,2
+
+
+ell = 1000
+
+nth    = 12
+jloop  = 4
+# thtout = 0  # theta=pi/2
+# set title "MHD magnetosphere ({/Symbol b}' = 0; {/Symbol q} = {/Symbol p}/2)"
+
+thtout = 8    # theta=5pi/6
+set title "MHD magnetosphere ({/Symbol b}' = 0; {/Symbol h} = 5{/Symbol p}/6)"
+# set title "MHD magnetosphere ({/Symbol b}' = 0; {/Symbol q} =-tan^{-1}({/Symbol m}_p/{/Symbol m}_H))"
+
+m = thtout*10
+
+# set xlabel "k_{perp} L_I / 2{/Symbol p}"
+set xlabel 'k_{/Symbol \136} L_I / 2{/Symbol p}'
+
+unset key
+
+set size 0.7,0.8
+set origin 0.0,0.0
+
+# set output "Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00.thtscan.tht_0.5pi.real.eps"
+# set output "Fig1a_Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00.thtscan.tht_5pi6.real.eps"
+set xrange[0:50]
+set yrange[-6:6]
+set ylabel "{/Symbol w}_r {/Symbol t}_A / {/Symbol p}"
+set ytics format "%.1f"
+set label 1 "(a)" at -10.0,8.0 font "Times-Roman,30"
+show label
+
+plot "Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00.thtscan.dat" \
+        every :::(m+0)::(m+0) using ($3/(2*pi)):($5*ell/pi) t "{/Symbol w}_r" w l lt 1 lw 2, \
+     "" every :::(m+1)::(m+1) using ($3/(2*pi)):($5*ell/pi) t "{/Symbol w}_r" w l lt 2 lw 2, \
+     "" every :::(m+2)::(m+2) using ($3/(2*pi)):($5*ell/pi) t "{/Symbol w}_r" w l lt 3 lw 2, \
+     "" every :::(m+3)::(m+3) using ($3/(2*pi)):($5*ell/pi) t "{/Symbol w}_r" w l lt 4 lw 2, \
+     "" every :::(m+4)::(m+4) using ($3/(2*pi)):($5*ell/pi) t "{/Symbol w}_r" w l lt 5 lw 2, \
+     "" every :::(m+5)::(m+5) using ($3/(2*pi)):($5*ell/pi) t "{/Symbol w}_r" w l lt 1 lw 2, \
+     "" every :::(m+6)::(m+6) using ($3/(2*pi)):($5*ell/pi) t "{/Symbol w}_r" w l lt 2 lw 2, \
+     "" every :::(m+7)::(m+7) using ($3/(2*pi)):($5*ell/pi) t "{/Symbol w}_r" w l lt 3 lw 2, \
+     "" every :::(m+8)::(m+8) using ($3/(2*pi)):($5*ell/pi) t "{/Symbol w}_r" w l lt 4 lw 2, \
+     "" every :::(m+9)::(m+9) using ($3/(2*pi)):($5*ell/pi) t "{/Symbol w}_r" w l lt 5 lw 2
+
+set size 0.7,0.8
+set origin 0.7,0.0
+
+# set output "Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00.thtscan.tht_0.5pi.imag.eps"
+# set output "Fig1b_Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00.thtscan.tht_5pi6.imag.eps"
+set xrange[0:50]
+set yrange[*:*]
+# set yrange[-0.6:0.6]
+set ylabel "{/Symbol g} {/Symbol t}_A / {/Symbol p}"
+set ytics format "%.1f"
+set label 1 "(b)" at -10.0,0.35 font "Times-Roman,30"
+show label
+
+plot "Mag-MHDp_dipole.param9.va-sqrtB.beta0.e00.thtscan.dat" \
+        every :::(m+0)::(m+0) using ($3/(2*pi)):($6*ell/pi) t "{/Symbol g}" w l lt 1 lw 2, \
+     "" every :::(m+1)::(m+1) using ($3/(2*pi)):($6*ell/pi) t "{/Symbol g}" w l lt 2 lw 2, \
+     "" every :::(m+2)::(m+2) using ($3/(2*pi)):($6*ell/pi) t "{/Symbol g}" w l lt 3 lw 2, \
+     "" every :::(m+3)::(m+3) using ($3/(2*pi)):($6*ell/pi) t "{/Symbol g}" w l lt 4 lw 2, \
+     "" every :::(m+4)::(m+4) using ($3/(2*pi)):($6*ell/pi) t "{/Symbol g}" w l lt 5 lw 2, \
+     "" every :::(m+5)::(m+5) using ($3/(2*pi)):($6*ell/pi) t "{/Symbol g}" w l lt 1 lw 2, \
+     "" every :::(m+6)::(m+6) using ($3/(2*pi)):($6*ell/pi) t "{/Symbol g}" w l lt 2 lw 2, \
+     "" every :::(m+7)::(m+7) using ($3/(2*pi)):($6*ell/pi) t "{/Symbol g}" w l lt 3 lw 2, \
+     "" every :::(m+8)::(m+8) using ($3/(2*pi)):($6*ell/pi) t "{/Symbol g}" w l lt 4 lw 2, \
+     "" every :::(m+9)::(m+9) using ($3/(2*pi)):($6*ell/pi) t "{/Symbol g}" w l lt 5 lw 2
+
